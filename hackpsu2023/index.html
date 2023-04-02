@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Meal Budgeter | Penn State</title>
+        <meta charset="UTF-8">
+        <link href="style.css" rel="stylesheet">
+        <script src="backend.js"></script>
+        <link rel="icon" href="https://www.psu.edu/favicon.ico">
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
+    </head>
+    
+    <body onload="currentSlide(1)">
+        <div class="testing">
+            <button style="flex: 1;" onclick="testAccounts()">Switch Datasets</button>
+        </div>
+
+        <div id="welcomeDiv">
+            <h1 id="welcome">Welcome</h1>
+            <hr style="width: 10%; height:3px; margin: auto; background-color: #96bee6; color: #96bee6; border: none;">
+        </div>
+
+        <section class="banner">
+            <div id="border"></div>
+            <div id="mealplanDiv">
+                <h1 id="mealplanBalance"></h1>
+                <p id="mealplanP" style="margin-top: 10px">Meal Plan budgeted <br>left for this week</p>
+
+                <label for="dropdownMealplan">Change Scope</label><br>
+                <select id="dropdownMealplan">
+                <option value="Weekly" selected>Weekly</option>
+                <option value="Daily">Daily</option>
+                <option value="Alltime">Alltime</option>
+                </select>
+            </div>
+            <div id="lioncashDiv">
+                <h1 id="lioncashBalance"></h1>
+                <p id="lioncashP" style="margin-top: 10px">LionCash budgeted <br>left for this week</p>
+
+                <label for="dropdownLioncash">Change Scope</label><br>
+                <select id="dropdownLioncash">
+                <option value="Weekly" selected>Weekly</option>
+                <option value="Daily">Daily</option>
+                <option value="Alltime">Alltime</option>
+                </select>
+
+            </div>
+            <div id="border"></div>
+        </section>
+        <section>
+            <h2>Your Expenses Breakdown</h2>
+            <div style="margin-top: 40px; margin-bottom: 40px;">
+                <canvas id="myChart" width="400" height="150"></canvas>
+                <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+            </div>
+            <h3 id="factHeader"></h3>
+        </section>
+
+        <section>
+            <div id="facts">
+                
+            </div>
+        </section>
+
+        <section>
+            <div class="slideshow-container">
+                <h4> Similar Restaurants In Your Price Range</h4>
+		
+                <div class="mySlides">
+                        <span class="slide-title">Pollock Commons Buffet</span>
+                        <div class="slide-indicators">
+                          <div class="slide-indicator"></div>
+                          <div class="slide-indicator"></div>
+                          <div class="slide-indicator"></div>
+                        </div>
+                        <div class="slide-text">
+                          <p>Pollock Commons</p>
+                          <p>Average Price per Meal: $3.50</p>
+                          <p>All You Care to Eat Buffet</p>
+                        </div>
+                      </div>
+        
+                      <div class="mySlides">
+                        <span class="slide-title">Pizza @ West</span>
+                        <div class="slide-indicators">
+                          <div class="slide-indicator"></div>
+                          <div class="slide-indicator"></div>
+                          <div class="slide-indicator"></div>
+                        </div>
+                        <div class="slide-text">
+                          <p>Waring Commons</p>
+                          <p>Average Price per Meal: $3.25</p>
+                          <p>Fresh Pizza Convieniently Located Near the Library</p>
+                        </div>
+                      </div>
+        
+                      <div class="mySlides">
+                        <span class="slide-title">Fresco y Caliente</span>
+                        <div class="slide-indicators">
+                          <div class="slide-indicator"></div>
+                          <div class="slide-indicator"></div>
+                          <div class="slide-indicator"></div>
+                        </div>
+                        <div class="slide-text">
+                          <p>Redifer Commons</p>
+                          <p>Average Price per Meal: $5</p>
+                          <p>A Variety of Southwestern Cuisine</p>
+                        </div>
+                      </div>
+        
+                      
+                      
+            
+            
+                
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            
+            
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </section>
+    </body>
+
+    <script type="text/javascript">
+        propagateHTML();
+        buildDoughnutCharts();
+
+        var dropdownLioncash = document.getElementById("dropdownLioncash");
+        var dropdownMealplan = document.getElementById("dropdownMealplan");
+
+
+    dropdownMealplan.addEventListener("change", function() {
+    var selectedValue1 = dropdownMealplan.value;
+    dropdownScopeMealplan(selectedValue1);
+     });
+
+    dropdownLioncash.addEventListener("change", function() {
+    var selectedValue = dropdownLioncash.value;
+    dropdownScopeLioncash(selectedValue);
+     });
+    </script>
+</html>
